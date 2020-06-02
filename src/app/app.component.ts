@@ -13,3 +13,4 @@ export class AppComponent {
     http.get('resource').subscribe(data => this.data = data);
   }
 }
+

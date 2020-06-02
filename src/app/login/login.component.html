@@ -1,0 +1,48 @@
+<mat-toolbar color="primary" >
+  <h1>Welcome to Helping Hands</h1>
+</mat-toolbar>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <div *ngIf="otpStatus=='false'">
+  <mat-card-content>
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+            <input matInput placeholder="Enter your mobile number" [(ngModel)]="phonenumber" name="phonenumber" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        </table>
+    </form>
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="generateotp()" color="primary" >Generate OTP</button>
+  </mat-card-actions>
+  </div>
+  <div *ngIf="otpStatus=='true'">
+    <mat-card-content>
+      <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+              <input matInput placeholder="Enter OTP"  maxlength="6" [(ngModel)]="otp" name="otp" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          </table>
+      </form>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="login()" color="primary">Login</button>
+      <mat-error *ngIf="invalidmessage">Incorrect OTP</mat-error>
+    </mat-card-actions>
+    </div>
+</mat-card>
+<div id = "sign-in-button"></div>

@@ -7,8 +7,35 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script  src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+  <script  src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBvcUsYI7yiLWLJLKU40V1cVqySSlo-azw",
+      authDomain: "helpinghands-d37d0.firebaseapp.com",
+      databaseURL: "https://helpinghands-d37d0.firebaseio.com",
+      projectId: "helpinghands-d37d0",
+      storageBucket: "helpinghands-d37d0.appspot.com",
+      messagingSenderId: "932651527196",
+      appId: "1:932651527196:web:b3b5148bd60807ea8683d9",
+      measurementId: "G-4XMWC8RMPN"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.auth().useDeviceLanguage();
+  </script>
+
 </head>
-<body>
+<style>
+  a { cursor: pointer }
+</style>
+<body class="mat-typography">
   <app-root></app-root>
 </body>
 </html>

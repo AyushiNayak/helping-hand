@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import{UserForm} from '../userForm';
 import {MatRadioButton, MatDatepicker} from '@angular/material'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -8,12 +9,12 @@ import {MatRadioButton, MatDatepicker} from '@angular/material'
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  selectedStatus:  string ;  
+  selectedStatus:  string ;
   matDatepicker : string;
   checkbox: boolean;
   user = new UserForm();
 
-  constructor() { 
+  constructor(private router: Router) {
 
   }
 
@@ -27,8 +28,9 @@ export class UserComponent implements OnInit {
   }
 
   register() : void {
-this.user.gender=this.selectedStatus; 
+this.user.gender=this.selectedStatus;
 this.user.dateofbirth = this.matDatepicker;
+this.router.navigate(['/home']);
 if(this.checkbox==true)
 {JSON.stringify(this.user);
   console.log(this.user);}

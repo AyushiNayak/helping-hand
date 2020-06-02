@@ -10,15 +10,21 @@ import {FormsModule} from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,
+  MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,MatExpansionModule,MatSelectModule,
    MatMenuModule,MatIconModule, MatProgressSpinnerModule,MatRadioModule,MatDatepickerModule,MatNativeDateModule,MatToolbarModule,MatCheckboxModule
 } from '@angular/material';
+import { HomeComponent } from './home/home.component';
+import { RequestHelpComponent } from './request-help/request-help.component';
+import { RequestHelpSuccessComponent } from './request-help-success/request-help-success.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UserComponent
+    UserComponent,
+    HomeComponent,
+    RequestHelpComponent,
+    RequestHelpSuccessComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +35,7 @@ import {
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatNativeDateModule,
-  MatButtonModule, 
+  MatButtonModule,
   MatDatepickerModule,
   MatRadioModule,
   MatCardModule,
@@ -39,9 +45,11 @@ import {
   MatMenuModule,
   MatIconModule,
   MatProgressSpinnerModule,
+    MatExpansionModule,
+    MatSelectModule,
   AppRoutingModule
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -6,5 +6,7 @@ export class UserForm {
       public email?: string,
       public gender?: string,
       public dateofbirth?:string,
+      public occupation?:string,
+      public postalcode ?:string,
     ) {}
   }

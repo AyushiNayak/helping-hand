@@ -1,6 +1,8 @@
 import { Component, OnInit ,Input} from '@angular/core';
 import {Router} from '@angular/router';
-import {MatDialog} from '@angular/material'
+import {MatDialog} from '@angular/material';
+
+
 
 @Component({
   selector: 'app-login',
@@ -20,7 +22,7 @@ export class LoginComponent implements OnInit {
   confirmationResultdisplay:any;
     ngOnInit() {
 
-
+  
 
 
       window['recaptchaVerifier'] = new window['firebase'].auth.RecaptchaVerifier('sign-in-button', {

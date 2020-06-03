@@ -6,11 +6,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 import {FormsModule} from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,
+  MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,MatExpansionModule,MatGridListModule,
    MatMenuModule,MatIconModule, MatProgressSpinnerModule,MatRadioModule,MatDatepickerModule,MatNativeDateModule,MatToolbarModule,MatCheckboxModule
 } from '@angular/material';
 
@@ -18,7 +19,8 @@ import {
   declarations: [
     AppComponent,
     LoginComponent,
-    UserComponent
+    UserComponent,
+    EditUserComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,9 @@ import {
   MatMenuModule,
   MatIconModule,
   MatProgressSpinnerModule,
-  AppRoutingModule
+  AppRoutingModule,
+  MatExpansionModule,
+  MatGridListModule
   ],
   
   providers: [],

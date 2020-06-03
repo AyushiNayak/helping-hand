@@ -12,6 +12,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  EditUser():void{
+    this.router.navigate(["edit-user"]);
+  }
 
   helpRequest() : void {
     this.router.navigate(['/request-help']);

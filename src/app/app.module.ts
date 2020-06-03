@@ -22,7 +22,7 @@ import { RequestHelpSuccessComponent } from './request-help-success/request-help
     AppComponent,
     LoginComponent,
     UserComponent,
-    EditUserComponent
+    EditUserComponent,
     HomeComponent,
     RequestHelpComponent,
     RequestHelpSuccessComponent

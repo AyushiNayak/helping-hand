@@ -8,12 +8,14 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import {FormsModule} from '@angular/forms';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,MatExpansionModule,MatGridListModule,
+  MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,MatExpansionModule,MatSelectModule,MatGridListModule,
    MatMenuModule,MatIconModule, MatProgressSpinnerModule,MatRadioModule,MatDatepickerModule,MatNativeDateModule,MatToolbarModule,MatCheckboxModule
 } from '@angular/material';
+import { HomeComponent } from './home/home.component';
+import { RequestHelpComponent } from './request-help/request-help.component';
+import { RequestHelpSuccessComponent } from './request-help-success/request-help-success.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,9 @@ import {
     LoginComponent,
     UserComponent,
     EditUserComponent
+    HomeComponent,
+    RequestHelpComponent,
+    RequestHelpSuccessComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +36,7 @@ import {
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatNativeDateModule,
-  MatButtonModule, 
+  MatButtonModule,
   MatDatepickerModule,
   MatRadioModule,
   MatCardModule,
@@ -41,11 +46,17 @@ import {
   MatMenuModule,
   MatIconModule,
   MatProgressSpinnerModule,
+<<<<<<< HEAD
   AppRoutingModule,
   MatExpansionModule,
   MatGridListModule
+=======
+    MatExpansionModule,
+    MatSelectModule,
+  AppRoutingModule
+>>>>>>> 90c13d7ba65345c11da3099d690ac36497aa9791
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })

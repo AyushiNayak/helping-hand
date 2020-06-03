@@ -1,0 +1,60 @@
+
+<mat-toolbar color="primary" >
+  <span>Request Form for help</span>
+</mat-toolbar>
+<mat-card class="my-card">
+  <mat-card-content>
+    <form #myForm="ngForm"class="my-form">
+
+      <mat-form-field class="full-width">
+        <mat-label>Category</mat-label>
+        <mat-select required [(ngModel)]= "selectedStatus" name="selectedStatus">
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{category}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="full-width">
+        <mat-label>Details</mat-label>
+        <textarea matInput placeholder="details of need." [(ngModel)]="details" name="details"></textarea>
+      </mat-form-field>
+
+
+      <mat-form-field class="full-width">
+        <mat-label>Date of help</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="matDatepicker" name="matDatepicker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="submit()" color="primary">Submit</button>
+  </mat-card-actions>
+</mat-card>
+
+<div *ngIf="visible">
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let volunteer of volunteers">
+    <mat-expansion-panel-header>
+      <mat-panel-title style="width: 60%">
+       {{ volunteer.name }}
+      </mat-panel-title>
+      <mat-panel-description style="width: 10%">
+        {{ volunteer.age }}
+      </mat-panel-description>
+      <mat-panel-description style="width: 30%">
+        {{ volunteer.gender }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p> {{ volunteer.location }}</p>
+    <mat-action-row>
+      <button mat-raised-button (click)="select()">Select</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+</div>
+<div *ngIf="!visible">Sorry there is no volunteers available in yor area right now.</div>

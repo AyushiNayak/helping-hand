@@ -1,6 +1,7 @@
 import { Component, OnInit ,Input} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
+import {and} from "@angular/router/src/utils/collection";
 
 
 
@@ -10,20 +11,23 @@ import {MatDialog} from '@angular/material';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
- 
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
     this.otpStatus= 'false';
+    this.mobileNoExist = true;
+    this.volunteer = true;
+    this.people = false;
   }
   phonenumber: string;
  otpStatus:string;
   otp:number;
   invalidmessage:boolean;
   confirmationResultdisplay:any;
+  mobileNoExist : boolean;
+  volunteer : boolean;
+  people : boolean;
+
     ngOnInit() {
-
-  
-
 
       window['recaptchaVerifier'] = new window['firebase'].auth.RecaptchaVerifier('sign-in-button', {
         'size': 'invisible',
@@ -34,8 +38,6 @@ export class LoginComponent implements OnInit {
         });
     }
 
-
-
     generateotp() : void {
       this.otpStatus = 'true';
 var phone = '+91'+this.phonenumber;
@@ -43,18 +45,18 @@ var phone = '+91'+this.phonenumber;
     .then( (confirmationResult)=> {
       // SMS sent. Prompt user to type the code from the message, then sign the
       // user in with confirmationResult.confirm(code).
-    
+
 
       this.confirmationResultdisplay = confirmationResult;
-      
-    }).catch((error) =>{
-      
-        this.otpStatus = 'false';
-      
-    }); 
-  
 
-/* 
+    }).catch((error) =>{
+
+        this.otpStatus = 'false';
+
+    });
+
+
+/*
       if(this.phonenumber == '1234567899' ){
       this.otpStatus = 'true';
        //this.router.navigate(["user"]);
@@ -64,7 +66,7 @@ var phone = '+91'+this.phonenumber;
     }
 
 
-    
+
     login():void{
 
 
@@ -73,9 +75,13 @@ var phone = '+91'+this.phonenumber;
         // User signed in successfully.
         var user = result.user;
         console.log(user);
-        this.router.navigate(["user"]);
-
-        // ...
+        if(this.mobileNoExist &&  this.volunteer){
+          this.router.navigate(['/volunteers']);
+        }else if(this.mobileNoExist && this.people ){
+          this.router.navigate(['/request-help']);
+        } else{
+          this.router.navigate(["user"]);
+        }
       }).catch((error) =>{
         // User couldn't sign in (bad verification code?)
         this.invalidmessage = true;

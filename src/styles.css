@@ -5,3 +5,47 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  margin :0;
+  font-family: 'Nunito','scan-serif';
+  font-size: 18px;
+}
+
+.container{
+  width: 100%;
+  margin:0 auto;
+}
+
+header {
+  background-color: blue;
+  padding: 1em 0;
+
+}
+header a{
+  color : white;
+  text-decoration: none;
+}
+
+header label.logo {
+  color : white;
+  text-decoration: none;
+  text-align: left;
+  font-size: 20px ;
+  font-weight: bold;
+  float: left;
+}
+header nav {
+  float: right;
+}
+
+header nav ul{
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+}
+
+header nav ul  li a{
+  padding: 1em;
+}
+

@@ -2,7 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import{UserForm} from '../userForm';
 import {MatRadioButton, MatDatepicker} from '@angular/material'
 import { Router } from '@angular/router';
-import { postcodeValidator } from 'postcode-validator';
+/*import { postcodeValidator } from 'postcode-validator';*/
 import states  from '../../assets/states.json';
 import cities  from '../../assets/cities.json';
 
@@ -23,10 +23,11 @@ export class UserComponent implements OnInit {
   postalValidation:string;
   state:any;
   city:any;
-   
+  navBar = false;
+
   constructor(private router: Router) {
 
-    
+
   }
 
 
@@ -41,13 +42,13 @@ export class UserComponent implements OnInit {
   }
   postalverify(){
 
-    this.pincode = postcodeValidator(this.user.pincode, 'IN');
+    /*this.pincode = postcodeValidator(this.user.pincode, 'IN');
    if(this.pincode==false)
    {
 this.postalValidation = 'invalid';
    }else{
     this.postalValidation = 'valid';
-   }
+   }*/
 
   }
 
@@ -57,7 +58,7 @@ this.postalValidation = 'invalid';
     this.city= city1;
   }
 
-  
+
 
   register() : void {
 this.user.dateofbirth = this.matDatepicker;

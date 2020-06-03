@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RequestHelpSuccessComponent } from './request-help-success.component';
+import { VolunteersComponent } from './volunteers.component';
 
-describe('RequestHelpSuccessComponent', () => {
-  let component: RequestHelpSuccessComponent;
-  let fixture: ComponentFixture<RequestHelpSuccessComponent>;
+describe('VolunteersComponent', () => {
+  let component: VolunteersComponent;
+  let fixture: ComponentFixture<VolunteersComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RequestHelpSuccessComponent ]
+      declarations: [ VolunteersComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RequestHelpSuccessComponent);
+    fixture = TestBed.createComponent(VolunteersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

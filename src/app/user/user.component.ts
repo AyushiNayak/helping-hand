@@ -15,7 +15,7 @@ export class UserComponent implements OnInit {
   matDatepicker : string;
   checkbox: boolean;
   user = new UserForm();
-  postalCodeVerify:boolean;
+  pincode:boolean;
   postalValidation:string;
 
   constructor(private router: Router) {
@@ -31,8 +31,8 @@ export class UserComponent implements OnInit {
   }
   postalverify(){
 
-    this.postalCodeVerify = postcodeValidator(this.user.pincode, 'IN');
-   if(this.postalCodeVerify==false)
+    this.pincode = postcodeValidator(this.user.pincode, 'IN');
+   if(this.pincode==false)
    {
 this.postalValidation = 'invalid';
    }else{

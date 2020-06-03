@@ -1,5 +1,6 @@
 package com.helpinghand.controller;
 
+import com.helpinghand.entity.Address;
 import com.helpinghand.entity.User;
 import com.helpinghand.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,12 @@ public class UserController {
   @GetMapping("/user")
   public String createUser() {
     User user = new User(1L, "sanjida", "barlaskar");
-
+    Address address = new Address();
+    address.setCity("Hyderabad");
+    address.setFirstLine("Whitefields");
+    address.setState("Telengana");
+    address.setPinCode(500084);
+    user.setAddress(address);
     userService.save(user);
     return "hello";
   }

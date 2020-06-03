@@ -31,7 +31,7 @@ export class UserComponent implements OnInit {
   }
   postalverify(){
 
-    this.postalCodeVerify = postcodeValidator(this.user.postalcode, 'IN');
+    this.postalCodeVerify = postcodeValidator(this.user.pincode, 'IN');
    if(this.postalCodeVerify==false)
    {
 this.postalValidation = 'invalid';

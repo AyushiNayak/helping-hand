@@ -18,13 +18,21 @@
             <input  matInput  placeholder="Address"  [(ngModel)]="user.address" name="address"  required>
          </mat-form-field>
          <mat-form-field class="full-width">
+          <mat-label>Postal Code</mat-label>
+          <input  matInput  placeholder="PostalCode"  [(ngModel)]="user.postalcode" name="postalcode" (blur)="postalverify()"  required>
+       </mat-form-field>
+        <mat-form-field class="full-width">
             <mat-label>Email</mat-label>
-            <input  matInput  placeholder="Email"  [(ngModel)]="user.email" name="email" >
+            <input  matInput  placeholder="Email"  [(ngModel)]="user.email" name="email" required >
          </mat-form-field>
-               <section class="example-section">
+         <mat-form-field class="full-width">
+          <mat-label>Occupation</mat-label>
+          <input  matInput  placeholder="Occupation"  [(ngModel)]="user.occupation" name="occupation" >
+       </mat-form-field>
+               <section class="example-section" >
           <label class="example-margin">Gender:</label>
-          <mat-radio-group [(ngModel)]="selectedStatus" name="selectedStatus">
-            <mat-radio-button class="example-margin"  value = "male" >Male</mat-radio-button>
+          <mat-radio-group [(ngModel)]="selectedStatus" name="selectedStatus" >
+            <mat-radio-button class="example-margin"  checked value = "male" >Male</mat-radio-button>
             <mat-radio-button class="example-margin" value="female" >Female</mat-radio-button>
             <mat-radio-button class="example-margin" value="other">Other</mat-radio-button>
           </mat-radio-group>
@@ -32,7 +40,7 @@
      
        <mat-form-field>
           <mat-label>Date of Birth</mat-label>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="matDatepicker" name="matDatepicker">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="matDatepicker" name="matDatepicker" required>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field> 
@@ -44,7 +52,8 @@
      </form>
 </mat-card-content>
 <mat-card-actions>
-  <button mat-raised-button (click)="register()" color="primary">REGISTER</button>
-  <mat-error *ngIf="!checkbox">Please agree to terms to proceed further</mat-error>
+  <button mat-raised-button [disabled]="!myForm.valid"(click)="register()" color="primary">REGISTER</button>
+  <mat-error *ngIf="!checkbox ">Please agree to terms to proceed further</mat-error>
+  <mat-error *ngIf="postalValidation=='invalid'">Please enter valid postal code</mat-error>
 </mat-card-actions>
 </mat-card>

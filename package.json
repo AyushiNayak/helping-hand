@@ -24,7 +24,12 @@
     "@angular/router": "~7.2.0",
     "bootstrap": "^3.4.1",
     "core-js": "^2.5.4",
+<<<<<<< HEAD
     "jquery": "^3.5.1",
+=======
+    "jquery": "^3.3.1",
+    "postcode-validator": "^3.1.0",
+>>>>>>> c97afb005c73db7b3e551543b199b704bb7a1728
     "rxjs": "~6.0.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

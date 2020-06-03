@@ -46,15 +46,11 @@ import { RequestHelpSuccessComponent } from './request-help-success/request-help
   MatMenuModule,
   MatIconModule,
   MatProgressSpinnerModule,
-<<<<<<< HEAD
   AppRoutingModule,
   MatExpansionModule,
-  MatGridListModule
-=======
-    MatExpansionModule,
-    MatSelectModule,
+  MatGridListModule,
+  MatSelectModule,
   AppRoutingModule
->>>>>>> 90c13d7ba65345c11da3099d690ac36497aa9791
   ],
 
   providers: [],

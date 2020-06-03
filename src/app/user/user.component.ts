@@ -2,6 +2,8 @@ import { Component, OnInit,Input } from '@angular/core';
 import{UserForm} from '../userForm';
 import {MatRadioButton, MatDatepicker} from '@angular/material'
 import { Router } from '@angular/router';
+import { postcodeValidator } from 'postcode-validator';
+
 
 @Component({
   selector: 'app-user',
@@ -13,6 +15,8 @@ export class UserComponent implements OnInit {
   matDatepicker : string;
   checkbox: boolean;
   user = new UserForm();
+  postalCodeVerify:boolean;
+  postalValidation:string;
 
   constructor(private router: Router) {
 
@@ -24,15 +28,25 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.checkbox = !this.checkbox;
 
+  }
+  postalverify(){
+
+    this.postalCodeVerify = postcodeValidator(this.user.postalcode, 'IN');
+   if(this.postalCodeVerify==false)
+   {
+this.postalValidation = 'invalid';
+   }else{
+    this.postalValidation = 'valid';
+   }
 
   }
 
   register() : void {
 this.user.gender=this.selectedStatus;
 this.user.dateofbirth = this.matDatepicker;
-this.router.navigate(['/home']);
 if(this.checkbox==true)
 {JSON.stringify(this.user);
+  this.router.navigate(['/home']);
   console.log(this.user);}
   }
 

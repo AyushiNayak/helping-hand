@@ -18,9 +18,26 @@
             <input  matInput  placeholder="Address"  [(ngModel)]="user.address" name="address"  required>
          </mat-form-field>
          <mat-form-field class="full-width">
+          <mat-label>State</mat-label>
+          <mat-select  [(ngModel)]="user.state" name ="state"(selectionChange)="onStateChange()" >
+            <mat-option *ngFor="let brand of state" [value]="brand" >
+              {{brand}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>City</mat-label>
+          <mat-select  [(ngModel)]="user.city" name ="city">
+            <mat-option *ngFor="let brand of city" [value]="brand.name" >
+              {{brand.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+         <mat-form-field class="full-width">
           <mat-label>Postal Code</mat-label>
           <input  matInput  placeholder="PostalCode"  [(ngModel)]="user.pincode" name="pincode" (blur)="postalverify()"  required>
        </mat-form-field>
+       <mat-error *ngIf="postalValidation=='invalid'">Please enter valid postal code</mat-error>
         <mat-form-field class="full-width">
             <mat-label>Email</mat-label>
             <input  matInput  placeholder="Email"  [(ngModel)]="user.email" name="email" required >
@@ -30,11 +47,18 @@
           <input  matInput  placeholder="Occupation"  [(ngModel)]="user.occupation" name="occupation" >
        </mat-form-field>
                <section class="example-section" >
-          <label class="example-margin">Gender:</label>
-          <mat-radio-group [(ngModel)]="selectedStatus" name="selectedStatus" >
-            <mat-radio-button class="example-margin"  checked value = "male" >Male</mat-radio-button>
-            <mat-radio-button class="example-margin" value="female" >Female</mat-radio-button>
-            <mat-radio-button class="example-margin" value="other">Other</mat-radio-button>
+          <label class="example-margin">Gender :</label>
+          <mat-radio-group [(ngModel)]="user.gender" name ="selectedStatus">
+            <mat-radio-button class="radio-button" value = "male"  >Male</mat-radio-button>
+            <mat-radio-button class="radio-button"  value="female">Female</mat-radio-button>
+            <mat-radio-button class="radio-button" value="other">Other</mat-radio-button>
+          </mat-radio-group>
+        </section>
+        <section class="example-section" >
+          <label class="example-margin">Register as :</label>
+          <mat-radio-group [(ngModel)]="user.role" name="role" >
+            <mat-radio-button class="radio-button"   value ="volunteer">Volunteer</mat-radio-button>
+            <mat-radio-button class="radio-button" value="needhelp" >Looking For Help</mat-radio-button>
           </mat-radio-group>
         </section>
      
@@ -54,6 +78,5 @@
 <mat-card-actions>
   <button mat-raised-button [disabled]="!myForm.valid"(click)="register()" color="primary">REGISTER</button>
   <mat-error *ngIf="!checkbox ">Please agree to terms to proceed further</mat-error>
-  <mat-error *ngIf="postalValidation=='invalid'">Please enter valid postal code</mat-error>
 </mat-card-actions>
 </mat-card>

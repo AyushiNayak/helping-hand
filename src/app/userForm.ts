@@ -10,5 +10,10 @@ export class UserForm {
       public state?:string,
       public pincode? :string,
       public occupation?:string,
-    ) {}
+      public role?:string,
+    ) {
+
+      this.gender="male";
+      this.role="volunteer";
+    }
   }

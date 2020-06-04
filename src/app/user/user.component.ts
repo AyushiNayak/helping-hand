@@ -31,7 +31,7 @@ export class UserComponent implements OnInit {
   navBar = false;
 
 
-   
+
   constructor(private router: Router,private http: HttpClient) {
 
 
@@ -71,23 +71,23 @@ this.postalValidation = 'invalid';
   var domain = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '');
 
  this.href = this.router.url;
- 
+
 this.user.dateofbirth = this.matDatepicker;
 if(this.checkbox==true)
 {
    const headers = new HttpHeaders ({'Content-Type': 'application/json'});
-this.http.post(domain+this.href+'/userCreate', JSON.stringify(this.user), {headers: headers})
+this.http.post(domain+this.href+'/create', JSON.stringify(this.user), {headers: headers})
   .subscribe(
       data => {
         console.log('favourite received');
       },
       error => {
         console.log('an error occured');
-      } 
+      }
     )
 
-  
-  
+
+
   JSON.stringify(this.user);
   this.router.navigate(['/home']);
   console.log(this.user);}

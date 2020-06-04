@@ -14,7 +14,7 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-  @GetMapping("/user")
+  @GetMapping("/userCreate")
   public String createUser() {
     User user = new User(1L, "sanjida", "barlaskar");
     Address address = new Address();

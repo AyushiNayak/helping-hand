@@ -5,6 +5,10 @@ import { Router } from '@angular/router';
 import { postcodeValidator } from 'postcode-validator';
 import states  from '../../assets/states.json';
 import cities  from '../../assets/cities.json';
+import { HttpClient } from  '@angular/common/http';
+import { HttpHeaders } from  '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-user',
@@ -21,10 +25,11 @@ export class UserComponent implements OnInit {
   user = new UserForm();
   pincode:boolean;
   postalValidation:string;
-  state:any;
+      public href: string = "";
+    state:any;
   city:any;
    
-  constructor(private router: Router) {
+  constructor(private router: Router,private http: HttpClient) {
 
     
   }
@@ -59,10 +64,28 @@ this.postalValidation = 'invalid';
 
   
 
-  register() : void {
+ register() : void {
+  var domain = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '');
+
+ this.href = this.router.url;
+ 
 this.user.dateofbirth = this.matDatepicker;
 if(this.checkbox==true)
-{JSON.stringify(this.user);
+{
+   const headers = new HttpHeaders ({'Content-Type': 'application/json'});
+this.http.post(domain+this.href+'/userCreate', JSON.stringify(this.user), {headers: headers})
+  .subscribe(
+      data => {
+        console.log('favourite received');
+      },
+      error => {
+        console.log('an error occured');
+      } 
+    )
+
+  
+  
+  JSON.stringify(this.user);
   this.router.navigate(['/home']);
   console.log(this.user);}
   }

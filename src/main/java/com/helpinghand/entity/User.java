@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import java.util.Date;
 
 @Entity
 public class User {
@@ -18,6 +19,8 @@ public class User {
   private String dateofbirth;
   private String occupation;
   private String role ;
+  private Date createDate = new Date() ;
+
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "id", referencedColumnName = "address_id")
@@ -103,6 +106,15 @@ public class User {
   public void setAddress(Address address) {
     this.address = address;
   }
+
+  public Date getCreateDate() {
+    return createDate;
+  }
+
+  public void setCreateDate(Date createDate) {
+    this.createDate = createDate;
+  }
+
 }
 
 

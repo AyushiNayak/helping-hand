@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDatepicker} from '@angular/material'
-import {FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
 @Component({
@@ -11,10 +9,20 @@ import {Router} from "@angular/router";
 
 export class RequestHelpComponent implements OnInit {
   selectedStatus:  string ;
-  matDatepicker : string;
+  matDatepickerStart : string;
+  matDatepickerTo : string;
+  minDate: Date;
   details : string;
-  dateofhelp : string;
-  categories = ["ab","cd","ef","gh"];
+  submitBtnVisible : boolean;
+  updateBtnVisible : boolean;
+  cancleBtnVisible : boolean;
+  categories = ["Need Medicines",
+    "Need food / know someone who is in need",
+    "Assistance needed for hospital Visit",
+    "Grocery/Daily basic items needed",
+    "Feeling lonely/in depression , need to talk to someone",
+    "Need a ride to / from airport / railway station"
+  ];
   visible = false;
   volunteers = [
     {
@@ -40,29 +48,43 @@ export class RequestHelpComponent implements OnInit {
     }
   ]
   //reqHelp = new RequestHelpForm();
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.minDate = new Date();
+    this.submitBtnVisible = true;
+    this.updateBtnVisible = false;
+    this.cancleBtnVisible = false;
+  }
 
   ngOnInit() {
   }
 
   submit() : void {
-    if(!this.isEmpty(this.selectedStatus) && !this.isEmpty(this.matDatepicker)){
-      console.log(this.selectedStatus + ","+ this.matDatepicker);
+    if(!this.isEmpty(this.selectedStatus) && !this.isEmpty(this.matDatepickerStart)){
+      console.log(this.selectedStatus + ","+ this.matDatepickerStart);
       this.visible = true;
     }
     JSON.stringify(this.selectedStatus);
   }
 
   select() : void{
-    this.router.navigate(['/request-success']);
+    this.submitBtnVisible = false;
+    this.updateBtnVisible = true;
+    this.cancleBtnVisible = true;
+  }
+
+  cancle() : void{
+    this.submitBtnVisible = true;
+    this.updateBtnVisible = false;
+    this.cancleBtnVisible = false;
+    this.matDatepickerStart = "";
+    this.matDatepickerTo = "";
+    this.details = "";
+    this.selectedStatus = "";
+    this.visible = false;
   }
 
    isEmpty(val){
     return (val === undefined || val == null || val.length <= 0) ? true : false;
   }
 
-  /*getJsonLength(){
-    Object.keys(this.volunteers).length >= 1 ? this.visible = true : this.visible = false;
-  }
-*/
 }

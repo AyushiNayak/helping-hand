@@ -1,6 +1,5 @@
-
-<mat-toolbar color="primary" >
-  <span>Request Form for help</span>
+<mat-toolbar color="#4183c4" >
+  <span>Please Update the details</span>
 </mat-toolbar>
 <mat-card class="my-card">
   <mat-card-content>
@@ -24,19 +23,32 @@
 
 
       <mat-form-field class="full-width">
-        <mat-label>Date of help</mat-label>
-        <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="matDatepicker" name="matDatepicker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-label>Start Date</mat-label>
+        <input matInput [min]="minDate" [matDatepicker]="picker1" placeholder="Choose a date" [(ngModel)]="matDatepickerStart" name="matDatepickerStart">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>End Date</mat-label>
+        <input matInput [min]="minDate" [matDatepicker]="picker2" placeholder="Choose a date" [(ngModel)]="matDatepickerTo" name="matDatepickerTo">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button (click)="submit()" color="primary">Submit</button>
+    <button mat-raised-button *ngIf="submitBtnVisible" (click)="submit()" color="primary">Submit</button>
+  </mat-card-actions>
+  <mat-card-actions>
+    <button mat-raised-button *ngIf="updateBtnVisible"(click)="update()" color="primary">Update</button>
+
+    <button mat-raised-button *ngIf="cancleBtnVisible" (click)="cancle()" color="primary">Cancel</button>
   </mat-card-actions>
 </mat-card>
 
-<div *ngIf="visible">
+<div class="result" *ngIf="visible">
+  <p>Volunteers : </p>
 <mat-accordion>
   <mat-expansion-panel *ngFor="let volunteer of volunteers">
     <mat-expansion-panel-header>
@@ -57,4 +69,4 @@
   </mat-expansion-panel>
 </mat-accordion>
 </div>
-<div *ngIf="!visible">Sorry there is no volunteers available in yor area right now.</div>
+

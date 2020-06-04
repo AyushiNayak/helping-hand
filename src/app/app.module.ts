@@ -15,7 +15,7 @@ import {
 } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { RequestHelpComponent } from './request-help/request-help.component';
-import { RequestHelpSuccessComponent } from './request-help-success/request-help-success.component';
+import { VolunteersComponent } from './volunteers/volunteers.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { RequestHelpSuccessComponent } from './request-help-success/request-help
     EditUserComponent,
     HomeComponent,
     RequestHelpComponent,
-    RequestHelpSuccessComponent
+    VolunteersComponent
   ],
   imports: [
     CommonModule,

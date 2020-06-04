@@ -2,7 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import{UserForm} from '../userForm';
 import {MatRadioButton, MatDatepicker} from '@angular/material'
 import { Router } from '@angular/router';
-import { postcodeValidator } from 'postcode-validator';
+/*import { postcodeValidator } from 'postcode-validator';*/
 import states  from '../../assets/states.json';
 import cities  from '../../assets/cities.json';
 import { HttpClient } from  '@angular/common/http';
@@ -28,10 +28,13 @@ export class UserComponent implements OnInit {
       public href: string = "";
     state:any;
   city:any;
+  navBar = false;
+
+
    
   constructor(private router: Router,private http: HttpClient) {
 
-    
+
   }
 
 
@@ -46,13 +49,13 @@ export class UserComponent implements OnInit {
   }
   postalverify(){
 
-    this.pincode = postcodeValidator(this.user.pincode, 'IN');
+    /*this.pincode = postcodeValidator(this.user.pincode, 'IN');
    if(this.pincode==false)
    {
 this.postalValidation = 'invalid';
    }else{
     this.postalValidation = 'valid';
-   }
+   }*/
 
   }
 
@@ -62,7 +65,7 @@ this.postalValidation = 'invalid';
     this.city= city1;
   }
 
-  
+
 
  register() : void {
   var domain = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '');

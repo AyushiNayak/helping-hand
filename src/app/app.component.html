@@ -1,8 +1,23 @@
-<div style="text-align:center;width:500px"class="container">
- 
-  <div style="width:500px">
+<header>
+  <div class="container">
+    <label class="logo"> HelpingHand </label>
+    <nav fixed-top>
+      <ul>
+        <li><a routerLink="/edit-user" label="details">Update Details</a></li>
+        <li><a routerLink="/" label="logoutIcon">logout</a></li>
+      </ul>
+    </nav>
+    <app-volunteers *ngIf="details" ></app-volunteers>
+
+
+  </div>
+</header>
+<div style="text-align:center;"class="container">
+
+  <div style="...">
  <router-outlet></router-outlet>
 </div>
-  
+
 </div>
+
 

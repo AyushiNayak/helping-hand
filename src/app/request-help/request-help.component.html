@@ -9,7 +9,7 @@
         <mat-label>Category</mat-label>
         <mat-select required [(ngModel)]= "selectedStatus" name="selectedStatus">
           <mat-option *ngFor="let category of categories" [value]="category">
-            {{category}}
+            {{category.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>

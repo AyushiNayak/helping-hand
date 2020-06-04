@@ -16,6 +16,9 @@ import {
 import { HomeComponent } from './home/home.component';
 import { RequestHelpComponent } from './request-help/request-help.component';
 import { VolunteersComponent } from './volunteers/volunteers.component';
+import {NeedyPeopleService} from "./needyPeople.service";
+import {VolunteersService} from "./volunteers.service";
+import {CategoriesService} from "./categories.service";
 
 @NgModule({
   declarations: [
@@ -53,7 +56,7 @@ import { VolunteersComponent } from './volunteers/volunteers.component';
   AppRoutingModule
   ],
 
-  providers: [],
+  providers: [NeedyPeopleService,VolunteersService,CategoriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

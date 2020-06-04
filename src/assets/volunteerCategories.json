@@ -1,0 +1,13 @@
+[
+  {"id" : 1,
+   "name" : "Medicine requirement"
+  },
+  {"id" : 2,
+    "name" : "Need food / know someone who is in need"
+  },
+  {"id" : 3,
+    "name" : "Assistance needed for hospital Visit"
+  },
+  {"id" : 4,
+    "name" : "Grocery/Daily basic items needed"}
+  ]

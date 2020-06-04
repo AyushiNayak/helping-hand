@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {VolunteersService} from "../volunteers.service";
+import {CategoriesService} from "../categories.service";
 
 @Component({
   selector: 'app-request-help',
@@ -16,39 +18,11 @@ export class RequestHelpComponent implements OnInit {
   submitBtnVisible : boolean;
   updateBtnVisible : boolean;
   cancleBtnVisible : boolean;
-  categories = ["Need Medicines",
-    "Need food / know someone who is in need",
-    "Assistance needed for hospital Visit",
-    "Grocery/Daily basic items needed",
-    "Feeling lonely/in depression , need to talk to someone",
-    "Need a ride to / from airport / railway station"
-  ];
+  public volunteers = [];
+  public categories = [];
   visible = false;
-  volunteers = [
-    {
-      name:"Priyanka Pattnaik",
-      age: 16 ,
-      gender:"female",
-      location : "Madhapur,Hyderabad - 500081"
-    },{
-      name:"Ayushi Nayak",
-      age: 16 ,
-      gender:"female",
-      location : "whitefield,Hyderabad - 500081"
-    },{
-      name:"Sanjida balasker",
-      age: 16 ,
-      gender:"female",
-      location : "whitefield,Hyderabad - 500081"
-    }, {
-      name:"Lasya Priya",
-      age: 16 ,
-      gender:"female",
-      location : "whitefield,Hyderabad - 500081"
-    }
-  ]
-  //reqHelp = new RequestHelpForm();
-  constructor(private router: Router) {
+
+  constructor(private router: Router, private service : VolunteersService, private categoryService : CategoriesService) {
     this.minDate = new Date();
     this.submitBtnVisible = true;
     this.updateBtnVisible = false;
@@ -56,10 +30,12 @@ export class RequestHelpComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.service.getVolunteerList().subscribe(data => this.volunteers = data);
+    this.categoryService.getVolunteerCategories().subscribe(data => this.categories = data);
   }
 
   submit() : void {
-    if(!this.isEmpty(this.selectedStatus) && !this.isEmpty(this.matDatepickerStart)){
+    if(!this.isEmpty(this.selectedStatus)){
       console.log(this.selectedStatus + ","+ this.matDatepickerStart);
       this.visible = true;
     }

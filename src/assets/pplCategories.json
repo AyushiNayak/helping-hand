@@ -1,0 +1,21 @@
+[{
+  "name":"Priyanka Pattnaik",
+  "age" : 16 ,
+  "gender" :"female",
+  "location" : "Madhapur,Hyderabad - 500081"
+},{
+  "name":"Ayushi Nayak",
+  "age" : 16 ,
+  "gender":"female",
+  "location" : "whitefield,Hyderabad - 500081"
+},{
+  "name":"Sanjida balasker",
+  "age": 16 ,
+  "gender":"female",
+  "location" : "whitefield,Hyderabad - 500081"
+}, {
+  "name":"Lasya Priya",
+  "age": 16 ,
+  "gender":"female",
+  "location" : "whitefield,Hyderabad - 500081"
+}]

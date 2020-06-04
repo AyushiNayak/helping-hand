@@ -1,14 +1,14 @@
+import Address from './Address';
+
 export class UserForm {
     constructor(
-      public firstname?: string,
-      public lastname?: string,
-      public address?: string,
+      public id?:string,
+      public firstName?: string,
+      public lastName?: string,
+      public address :Address = new Address(),
       public email?: string,
       public gender?: string,
       public dateofbirth?:string,
-      public city?:string,
-      public state?:string,
-      public pincode? :string,
       public occupation?:string,
       public role?:string,
     ) {

@@ -21,13 +21,7 @@ public class HelpingHandApplication {
   }
 
 
-  @Bean
-  public CommandLineRunner demo(UserRepository repository) {
-    return (args) -> {
-      // save a few customers
-      repository.save(new User(11L, "sanjida", "barlaskar"));
-    };
-  }
+
 
 }
 

@@ -19,14 +19,7 @@ public class UserController {
 
   @PostMapping("/user/create")
   public String createUser(@RequestBody  User user) {
-    User user2 = new User(1L, "sanjida", "barlaskar");
-    Address address = new Address();
-    address.setCity("Hyderabad");
-    address.setFirstLine("Whitefields");
-    address.setState("Telengana");
-    address.setPinCode(500084);
-    user2.setAddress(address);
-    userService.save(user2);
+	    userService.save(user);
     return "hello";
   }
 

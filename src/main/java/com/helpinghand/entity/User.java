@@ -13,6 +13,11 @@ public class User {
   private Long id;
   private String firstName;
   private String lastName;
+  private String  email;
+  private String gender;
+  private String dateofbirth;
+  private String occupation;
+  private String role ;
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "id", referencedColumnName = "address_id")
@@ -20,11 +25,6 @@ public class User {
   protected User() {
   }
 
-  public User(Long id, String firstName, String lastName) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
 
   @Override
   public String toString() {
@@ -32,7 +32,45 @@ public class User {
       "User[id=%d, firstName='%s', lastName='%s']",
       id, firstName, lastName);
   }
+  public String getEmail() {
+		return email;
+	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getDateofbirth() {
+		return dateofbirth;
+	}
+
+	public void setDateofbirth(String dateofbirth) {
+		this.dateofbirth = dateofbirth;
+	}
+
+	public String getOccupation() {
+		return occupation;
+	}
+
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
   public void setId(Long id) {
     this.id = id;

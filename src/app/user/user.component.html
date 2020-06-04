@@ -7,19 +7,19 @@
   <form #myForm="ngForm"class="my-form">
      <mat-form-field class="full-width">
             <mat-label>First Name</mat-label>
-            <input  matInput  placeholder="First name"   [(ngModel)]="user.firstname" name="fname"   required>
+            <input  matInput  placeholder="First name"   [(ngModel)]="user.firstName" name="fname"   required>
          </mat-form-field>
          <mat-form-field class="full-width">
             <mat-label>Last Name</mat-label>
-            <input  matInput  placeholder="Last Name" [(ngModel)]="user.lastname" name="lname"  required>
+            <input  matInput  placeholder="Last Name" [(ngModel)]="user.lastName" name="lname"  required>
          </mat-form-field>
          <mat-form-field class="full-width">
             <mat-label>Address</mat-label>
-            <input  matInput  placeholder="Address"  [(ngModel)]="user.address" name="address"  required>
+            <input  matInput  placeholder="Address"  [(ngModel)]="user.address.firstLine" name="address"  required>
          </mat-form-field>
          <mat-form-field class="full-width">
           <mat-label>State</mat-label>
-          <mat-select  [(ngModel)]="user.state" name ="state"(selectionChange)="onStateChange()" >
+          <mat-select  [(ngModel)]="user.address.state" name ="state"(selectionChange)="onStateChange()" >
             <mat-option *ngFor="let brand of state" [value]="brand" >
               {{brand}}
             </mat-option>
@@ -27,7 +27,7 @@
         </mat-form-field>
         <mat-form-field class="full-width">
           <mat-label>City</mat-label>
-          <mat-select  [(ngModel)]="user.city" name ="city">
+          <mat-select  [(ngModel)]="user.address.city" name ="city">
             <mat-option *ngFor="let brand of city" [value]="brand.name" >
               {{brand.name}}
             </mat-option>
@@ -35,7 +35,7 @@
         </mat-form-field>
          <mat-form-field class="full-width">
           <mat-label>Postal Code</mat-label>
-          <input  matInput  placeholder="PostalCode"  [(ngModel)]="user.pincode" name="pincode" (blur)="postalverify()"  required>
+          <input  matInput  placeholder="PostalCode"  [(ngModel)]="user.address.pinCode" name="pincode" (blur)="postalverify()"  required>
        </mat-form-field>
        <mat-error *ngIf="postalValidation=='invalid'">Please enter valid postal code</mat-error>
         <mat-form-field class="full-width">

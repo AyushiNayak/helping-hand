@@ -1,7 +1,13 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit ,Input,Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 import {and} from "@angular/router/src/utils/collection";
+import { AppService } from '../app.service';
+import { UserForm } from '../userForm';
+import { HttpClient } from  '@angular/common/http';
+import { HttpHeaders } from  '@angular/common/http';
+
+
 
 
 
@@ -11,21 +17,20 @@ import {and} from "@angular/router/src/utils/collection";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  user:UserForm;
 
-  constructor(private router: Router) {
+
+
+  constructor(private router: Router,private appservice:AppService,private http: HttpClient ) {
+    this.user = appservice.user;
     this.otpStatus= 'false';
-    this.mobileNoExist = false;
-    this.volunteer = true;
-    this.people = false;
   }
-  phonenumber: string;
- otpStatus:string;
+ phonenumber: string;
+ public href: string = "";
+  otpStatus:string;
   otp:number;
   invalidmessage:boolean;
   confirmationResultdisplay:any;
-  mobileNoExist : boolean;
-  volunteer : boolean;
-  people : boolean;
 
     ngOnInit() {
 
@@ -40,7 +45,7 @@ export class LoginComponent implements OnInit {
 
     generateotp() : void {
       this.otpStatus = 'true';
-var phone = '+91'+this.phonenumber;
+var phone = '+91'+this.user.id;
             window['firebase'].auth().signInWithPhoneNumber(phone, window['recaptchaVerifier'])
     .then( (confirmationResult)=> {
       // SMS sent. Prompt user to type the code from the message, then sign the
@@ -56,13 +61,6 @@ var phone = '+91'+this.phonenumber;
     });
 
 
-/*
-      if(this.phonenumber == '1234567899' ){
-      this.otpStatus = 'true';
-       //this.router.navigate(["user"]);
-      }else {
-        this.otpStatus = 'false';
-      } */
     }
 
 
@@ -74,14 +72,30 @@ var phone = '+91'+this.phonenumber;
       this.confirmationResultdisplay.confirm(code).then((result) =>{
         // User signed in successfully.
         var user = result.user;
-        console.log(user);
-        if(this.mobileNoExist &&  this.volunteer){
+        var domain = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '');
+        this.href = this.router.url;
+
+        this.http.get<any>(domain+this.href+'user/'+this.user.id).subscribe(data => {
+        if(data!=null && data.role=="volunteer")
+        {
           this.router.navigate(['/volunteers']);
-        }else if(this.mobileNoExist && this.people ){
+        }
+        else if(data!=null && data.role=="needhelp")
+        {
           this.router.navigate(['/request-help']);
-        } else{
+
+        }
+        else if(data == null){
           this.router.navigate(["user"]);
         }
+
+
+        },
+        error => {
+          console.log('an error occured');
+        }
+        )
+
       }).catch((error) =>{
         // User couldn't sign in (bad verification code?)
         this.invalidmessage = true;

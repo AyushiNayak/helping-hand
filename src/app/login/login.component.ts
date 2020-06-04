@@ -88,7 +88,7 @@ var phone = '+91'+this.user.id;
         else if(data == null){
           this.router.navigate(["user"]);
         }
-
+ 
 
         },
         error => {

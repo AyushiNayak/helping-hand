@@ -1,11 +1,12 @@
-<header>
+<header class="test">
   <div class="container">
-    <label class="logo"> HelpingHand </label>
+    <label class="logo"> Helping Hand </label>
     <nav fixed-top>
       <ul>
         <li><a routerLink="/edit-user" label="details">Update Details</a></li>
         <li><a routerLink="/" label="logoutIcon">logout</a></li>
       </ul>
+    
     </nav>
     <app-volunteers *ngIf="details" ></app-volunteers>
 
@@ -14,7 +15,7 @@
 </header>
 <div style="text-align:center;"class="container">
 
-  <div >
+  <div>
  <router-outlet></router-outlet>
 </div>
 

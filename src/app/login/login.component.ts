@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router) {
     this.otpStatus= 'false';
-    this.mobileNoExist = true;
+    this.mobileNoExist = false;
     this.volunteer = true;
     this.people = false;
   }

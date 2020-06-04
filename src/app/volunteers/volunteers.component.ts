@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {NeedyPeopleService} from "../needyPeople.service";
+import {CategoriesService} from "../categories.service";
 
 @Component({
   selector: 'app-volunteers',
@@ -11,45 +13,24 @@ export class VolunteersComponent implements OnInit {
   matDatepickerStart : string;
   matDatepickerTo : string;
   visible : boolean;
-  details = true;
-  startDate: Date;
+  minDate: Date;
+  public people = [];
+  public categories = [];
 
-
-  constructor() {
-    this.startDate = new Date();
+  constructor(private needservice : NeedyPeopleService, private categoryService : CategoriesService) {
+    this.minDate = new Date();
     }
 
   ngOnInit() {
+    this.needservice.getpeopleList().subscribe(data =>  this.people = data);
+    this.categoryService.getVolunteerCategories().subscribe(data => this.categories = data);
   }
 
-  categories = ["Medicine requirement","Food requirement","Hospital Visit","Daily essentials","Emotional Support - Voice call","Airport/Train Pickup/Drop"]
-
-  people = [
-    {
-      name:"Priyanka Pattnaik",
-      age: 16 ,
-      gender:"female",
-      location : "Madhapur,Hyderabad - 500081"
-    },{
-      name:"Ayushi Nayak",
-      age: 16 ,
-      gender:"female",
-      location : "whitefield,Hyderabad - 500081"
-    },{
-      name:"Sanjida balasker",
-      age: 16 ,
-      gender:"female",
-      location : "whitefield,Hyderabad - 500081"
-    }, {
-      name:"Lasya Priya",
-      age: 16 ,
-      gender:"female",
-      location : "whitefield,Hyderabad - 500081"
-    }
-  ]
   search() : void {
-    this.visible = true;
-    JSON.stringify(this.selectedStatus);
+    if(!this.isEmpty(this.selectedStatus)) {
+      this.visible = true;
+      JSON.stringify(this.selectedStatus);
+    }
   }
 
   isEmpty(val){

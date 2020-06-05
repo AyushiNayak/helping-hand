@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
 
     generateotp() : void {
       this.otpStatus = 'true';
-var phone = '+91'+this.user.id;
+var phone = '+91'+this.user.phoneNumber;
             window['firebase'].auth().signInWithPhoneNumber(phone, window['recaptchaVerifier'])
     .then( (confirmationResult)=> {
       // SMS sent. Prompt user to type the code from the message, then sign the
@@ -78,7 +78,7 @@ var phone = '+91'+this.user.id;
         var domain = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '');
         this.href = this.router.url;
 
-        this.http.get<any>(domain+this.href+'user/'+this.user.id).subscribe(data => {
+        this.http.get<any>(domain+this.href+'user/'+this.user.phoneNumber).subscribe(data => {
         if(data!=null && data.role=="volunteer")
         {
           this.router.navigate(['/volunteers']);

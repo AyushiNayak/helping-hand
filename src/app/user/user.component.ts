@@ -34,12 +34,13 @@ export class UserComponent implements OnInit {
   city:any;
   navBar = false;
   user:UserForm;
+  maxDate : Date;
 
 
 
   constructor(private router: Router,private http: HttpClient,private appservice:AppService) {
     this.user = appservice.user;
-
+    this.maxDate = new Date("12/31/2002");
 
   }
 

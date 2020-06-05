@@ -3,6 +3,7 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -18,7 +19,6 @@ body {
 }
 
 header {
-  background-color: blue;
   padding: 1em 0;
 
 }

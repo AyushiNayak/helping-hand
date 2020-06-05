@@ -21,7 +21,7 @@ export class RequestHelpComponent implements OnInit {
   description : string;
   submitBtnVisible : boolean;
   updateBtnVisible : boolean;
-  cancleBtnVisible : boolean;
+  deleteBtnVisible : boolean;
   public volunteers = [];
   public categories = [];
   visible = false;
@@ -35,7 +35,7 @@ export class RequestHelpComponent implements OnInit {
     this.minDate = new Date();
     this.submitBtnVisible = true;
     this.updateBtnVisible = false;
-    this.cancleBtnVisible = false;
+    this.deleteBtnVisible = false;
   }
 
   ngOnInit() {
@@ -51,7 +51,9 @@ export class RequestHelpComponent implements OnInit {
       console.log(JSON.stringify(this.seeker));
       this.service.getVolunteerList(JSON.stringify(this.seeker))
         .subscribe(
-          data => console.log(data),
+          data =>{
+            this.volunteers = data;
+          } ,
             error => console.log('an error occured') );
       this.visible = true;
     }
@@ -60,26 +62,13 @@ export class RequestHelpComponent implements OnInit {
   select() : void{
     this.submitBtnVisible = false;
     this.updateBtnVisible = true;
-    this.cancleBtnVisible = true;
-
-    /*var domain = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '')+ this.router.url;
-    const headers = new HttpHeaders ({'Content-Type': 'application/json'});
-    this.http.post(domain+'/create', JSON.stringify(this.details), {headers: headers})
-      .subscribe(
-        data => {
-          console.log('favourite received');
-        },
-        error => {
-          console.log('an error occured');
-        }
-      )*/
-
+    this.deleteBtnVisible = true;
   }
 
   delete() : void{
     this.submitBtnVisible = true;
     this.updateBtnVisible = false;
-    this.cancleBtnVisible = false;
+    this.deleteBtnVisible = false;
     this.visible = false;
   }
 

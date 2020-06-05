@@ -1,3 +1,14 @@
+<header class="test">
+  <div class="container">
+    <label class="logo"> Helping Hand </label>
+    <nav fixed-top>
+      <ul>
+        <li><a routerLink="/edit-user" label="details">Update Details</a></li>
+        <li><a routerLink="/" label="logoutIcon">logout</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
 <mat-toolbar color="primary" class="my-card">
     <span>Edit profile</span>
@@ -33,13 +44,13 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            
+
               <mat-form-field class="full-width">
                <mat-label>Postal Code</mat-label>
                <input  matInput  placeholder="PostalCode"  [(ngModel)]="editUser.address.pincode" name="pincode" (blur)="postalverify()"  required>
             </mat-form-field>
             <mat-error *ngIf="postalValidation=='invalid'">Please enter valid postal code</mat-error>
-          
+
            <mat-form-field class="full-width">
               <mat-label>Email</mat-label>
               <input  matInput  placeholder="Email"  [(ngModel)]="editUser.email" name="email" >
@@ -63,13 +74,13 @@
               <mat-radio-button class="radio-button" value="needhelp" >Looking For Help</mat-radio-button>
             </mat-radio-group>
           </section>
-       
+
          <mat-form-field>
             <mat-label>Date of Birth</mat-label>
         <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="matDatepicker" name="matDatepicker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field> 
+      </mat-form-field>
              </form>
   </mat-card-content>
   <mat-card-actions>
@@ -77,4 +88,3 @@
     <button mat-raised-button type="cancel" (click)="cancel()" color="primary">Cancel</button>
   </mat-card-actions>
     </mat-card>
-  

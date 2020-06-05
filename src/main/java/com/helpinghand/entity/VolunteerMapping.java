@@ -8,9 +8,10 @@ import java.util.Objects;
 @Entity
 public class VolunteerMapping implements Serializable {
 
+
   @Id
   private int volunteerId;
-  @Id
+
   private int seekerId;
 
   public int getVolunteerId() {

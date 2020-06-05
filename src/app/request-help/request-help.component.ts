@@ -58,21 +58,24 @@ export class RequestHelpComponent implements OnInit {
     }
   }
 
-  select() : void{
-    this.submitBtnVisible = false;
-    this.updateBtnVisible = true;
-    this.deleteBtnVisible = true;
+  select(id) : void{
+   let sample = {volunteerId :id,seekerId : this.appservice.user.id};
+   const url = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '') + '/request-help/request';
+    if(confirm("Are you sure you want to proceed ")) {
+      const headers = new HttpHeaders({'Content-Type': 'application/json'});
+       this.http.post<any>(url, JSON.stringify(sample), {headers: headers})
+        .subscribe(
+          data =>{
+            console.log(data);
+            this.visible = false;
+          } ,
+          error => console.log('an error occured') );
+    }
+
   }
 
-  delete() : void{
-    this.submitBtnVisible = true;
-    this.updateBtnVisible = false;
-    this.deleteBtnVisible = false;
-    this.visible = false;
-  }
 
    isEmpty(val){
     return (val === undefined || val == null || val.length <= 0) ? true : false;
   }
-
 }

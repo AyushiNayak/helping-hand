@@ -54,21 +54,18 @@
 <div class="result" *ngIf="visible">
   <p>Volunteers : </p>
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let volunteer of volunteers">
+  <mat-expansion-panel *ngFor="let user of volunteers">
     <mat-expansion-panel-header>
       <mat-panel-title style="width: 60%">
-       {{ volunteer.name }}
+       {{ user.firstName +" "+ user.lastName }}
       </mat-panel-title>
-      <mat-panel-description style="width: 10%">
-        {{ volunteer.age }}
-      </mat-panel-description>
       <mat-panel-description style="width: 30%">
-        {{ volunteer.gender }}
+        {{ user.gender }}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p> {{ volunteer.location }}</p>
+    <p> {{ user.address.city +", "+user.address.state +" - "+user.address.pinCode }}</p>
     <mat-action-row>
-      <button mat-raised-button (click)="select()">Select</button>
+      <button mat-raised-button (click)="select(user.id)">Select</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>

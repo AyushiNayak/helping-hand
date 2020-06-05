@@ -5,7 +5,6 @@ import { SeekerForm} from "../seekerForm";
 import {NeedyPeopleService} from "../needyPeople.service";
 import {UserForm} from "../userForm";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {People} from "../people";
 import {AppService} from "../app.service";
 
 @Component({
@@ -43,13 +42,12 @@ export class RequestHelpComponent implements OnInit {
   }
 
   submit() : void {
-    this.seeker.userId = this.user.id;
     this.seeker.category = this.selectedStatus;
     this.seeker.startDate = this.matDatepickerStart;
     this.seeker.description = this.description;
     if(!this.isEmpty(this.selectedStatus)){
       console.log(JSON.stringify(this.seeker));
-      this.service.getVolunteerList(JSON.stringify(this.seeker))
+      this.service.createSeeker(JSON.stringify(this.seeker))
         .subscribe(
           data => console.log(data),
             error => console.log('an error occured') );

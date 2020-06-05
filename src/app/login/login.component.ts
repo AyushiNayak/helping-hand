@@ -74,13 +74,14 @@ export class LoginComponent implements OnInit {
       this.href = this.router.url;
 
       this.http.get<any>(domain + this.href + 'get/' + this.user.phoneNumber).subscribe(data => {
-
         if (data != null && data.role == "volunteer") {
           this.user= data;
+          this.appservice.user = this.user;
           this.router.navigate(['/volunteers']);
         }
         else if (data != null && data.role == "needhelp") {
           this.user = data;
+          this.appservice.user = this.user;
           this.router.navigate(['/request-help']);
 
         }

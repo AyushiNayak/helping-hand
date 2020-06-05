@@ -11,7 +11,6 @@ public class SeekerDetail implements Serializable {
   private Date startDate;
   private int category;
   private String description;
-  private int volunteerAssigned;
   @Id
   private int userId;
 
@@ -21,14 +20,6 @@ public class SeekerDetail implements Serializable {
 
   public void setStartDate(Date startDate) {
     this.startDate = startDate;
-  }
-
-  public int getVolunteerAssigned() {
-    return volunteerAssigned;
-  }
-
-  public void setVolunteerAssigned(int volunteerAssigned) {
-    this.volunteerAssigned = volunteerAssigned;
   }
 
   public int getCategory() {

@@ -87,7 +87,14 @@ this.http.post<any>(domain+this.href+'/create', JSON.stringify(this.user), {head
   .subscribe(
       data => {
            this.user = data;
+           this.appservice.user = this.user;
            console.log('favourite received');
+           if (data != null && data.role == "volunteer") {
+              this.router.navigate(['/volunteers']);
+           } else
+           {
+            this.router.navigate(['/request-help']);
+           }
       },
       error => {
         console.log('an error occured');

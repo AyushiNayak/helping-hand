@@ -7,10 +7,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Demo';
-  data = {};
-  constructor(private http: HttpClient) {
-    http.get('resource').subscribe(data => this.data = data);
-  }
+  
 }
 

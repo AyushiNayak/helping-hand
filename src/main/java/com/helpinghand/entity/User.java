@@ -2,25 +2,35 @@ package com.helpinghand.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Objects;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
   @Id
+  @GeneratedValue
   private Long id;
   private String firstName;
   private String lastName;
   private String  email;
   private String gender;
-  private String dateofbirth;
+  private Date dateofbirth;
   private String occupation;
   private String role ;
+  private Date createDate = new Date() ;
+  private Long phoneNumber;
 
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "id", referencedColumnName = "address_id")
+
+
+  @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+  @JoinColumn(name =  "addressId")
   private Address address;
   protected User() {
   }
@@ -48,11 +58,11 @@ public class User {
 		this.gender = gender;
 	}
 
-	public String getDateofbirth() {
+	public Date getDateofbirth() {
 		return dateofbirth;
 	}
 
-	public void setDateofbirth(String dateofbirth) {
+	public void setDateofbirth(Date dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
 
@@ -102,6 +112,36 @@ public class User {
 
   public void setAddress(Address address) {
     this.address = address;
+  }
+
+  public Date getCreateDate() {
+    return createDate;
+  }
+
+  public void setCreateDate(Date createDate) {
+    this.createDate = createDate;
+  }
+
+  public Long getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public void setPhoneNumber(Long phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    User user = (User) o;
+    return Objects.equals(id, user.id);
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(id);
   }
 }
 

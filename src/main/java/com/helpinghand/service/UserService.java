@@ -13,7 +13,8 @@ public class UserService {
 
 
   public User findById(long l) {
-    return userRepository.findById(l);
+    User user =  userRepository.findById(l);
+    return user;
   }
 
   public User save(User user) {

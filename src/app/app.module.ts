@@ -13,7 +13,6 @@ import {
   MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,MatExpansionModule,MatSelectModule,MatGridListModule,
    MatMenuModule,MatIconModule, MatProgressSpinnerModule,MatRadioModule,MatDatepickerModule,MatNativeDateModule,MatToolbarModule,MatCheckboxModule
 } from '@angular/material';
-import { HomeComponent } from './home/home.component';
 import { RequestHelpComponent } from './request-help/request-help.component';
 import { VolunteersComponent } from './volunteers/volunteers.component';
 import {NeedyPeopleService} from "./needyPeople.service";
@@ -26,7 +25,6 @@ import {CategoriesService} from "./categories.service";
     LoginComponent,
     UserComponent,
     EditUserComponent,
-    HomeComponent,
     RequestHelpComponent,
     VolunteersComponent
   ],

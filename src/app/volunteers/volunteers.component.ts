@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoriesService} from "../categories.service";
-import {error} from "util";
 import {VolunteersService} from "../volunteers.service";
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import {VolunteerForm} from "../volunteerForm";
 import {UserForm} from "../userForm";
 import {AppService} from "../app.service";
@@ -23,7 +21,7 @@ export class VolunteersComponent implements OnInit {
   volunteer : VolunteerForm = new VolunteerForm();
   user : UserForm;
 
-  constructor(private volservice : VolunteersService, private categoryService : CategoriesService,private fb: FormBuilder,
+  constructor(private volservice : VolunteersService, private categoryService : CategoriesService,
               private appservice : AppService) {
     this.user = appservice.user;
     this.minDate = new Date();

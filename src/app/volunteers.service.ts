@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs/internal/Observable";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Volunteer} from "./volunteer";
 import {Router} from "@angular/router";
+import {UserForm} from "./userForm";
 
 @Injectable()
 export class VolunteersService {
@@ -11,8 +11,8 @@ export class VolunteersService {
 
   constructor(private http: HttpClient,private router : Router) { }
 
-   getpeopleList(details):Observable<Volunteer[]>{
+   getpeopleList(details):Observable<UserForm[]>{
        const headers = new HttpHeaders ({'Content-Type': 'application/json'});
-       return this.http.post<Volunteer[]>(this.url, details , {headers: headers});
+       return this.http.post<UserForm[]>(this.url, details , {headers: headers});
   }
 }

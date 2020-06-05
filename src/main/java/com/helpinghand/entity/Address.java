@@ -1,6 +1,5 @@
 package com.helpinghand.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,19 +10,18 @@ public class Address {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "address_id")
-  private Long id;
+  private Long addressId;
   private String firstLine;
   private String state;
   private String city;
   private int pinCode;
 
-  public Long getId() {
-    return id;
+  public Long getAddressId() {
+    return addressId;
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public void setAddressId(Long addressId) {
+    this.addressId = addressId;
   }
 
   public String getFirstLine() {

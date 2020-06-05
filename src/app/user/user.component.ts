@@ -96,6 +96,7 @@ this.http.post<any>(domain+this.href+'/create', JSON.stringify(this.user), {head
 
 
   JSON.stringify(this.user);
+  this.router.navigate(['/home']);
   console.log(this.user);}
   }
 

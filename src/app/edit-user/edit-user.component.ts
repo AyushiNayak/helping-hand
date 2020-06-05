@@ -18,7 +18,7 @@ import { postcodeValidator } from 'postcode-validator';
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
-  @ViewChild(LoginComponent) id;
+  id: any;
  selectedStatus:  string ;  
  matDatepicker : string;
   role:string;
@@ -32,19 +32,21 @@ export class EditUserComponent implements OnInit {
   
 
   constructor(private router: Router,private http: HttpClient,private appservice:AppService) {
-    this.editUser = appservice.user;
+    this.appservice.currentId.subscribe(id => this.id = id)
+    this.getUsers();
  }
 
   
 
 
   ngOnInit() {
+    this.appservice.currentId.subscribe(id => this.id = id)
     let state1 = [];
     for (let i = 0; i < states.length ; i++) {
       state1[i] = states[i].name;
     }
     this.state = state1;
-    this.getUsers();
+    
  }
  postalverify(){
 
@@ -70,7 +72,7 @@ saveChanges():void{
   this.href = this.router.url;
   this.editUser.dateofbirth = this.matDatepicker;
   const headers = new HttpHeaders ({'Content-Type': 'application/json'});
-  this.http.post(domain+this.href+'/create', JSON.stringify(this.editUser), {headers: headers})
+  this.http.post(domain+'/user/create', JSON.stringify(this.editUser), {headers: headers})
   .subscribe(
       data => {
         console.log('favourite received');
@@ -82,26 +84,29 @@ saveChanges():void{
       
 }
 
-getUsers():UserForm{
+getUsers():void{
   var domain = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '');
   this.href = this.router.url;
   const headers = new HttpHeaders ({'Content-Type': 'application/json'});
-  this.http.get<any>(domain+this.href+'user/'+this.id).subscribe(data => {
-    this.id = data.id;
+  this.http.get<any>(domain+'/user/'+ this.id).subscribe(data => {
+    this.editUser.id = data.id;
     this.editUser.firstName = data.firstName;
     this.editUser.lastName = data.lastName;
-    this.editUser.address = data.address;
+   // this.editUser.address.firstLine= data.address.firstLine;
+    //this.editUser.address.state= data.address.state;
+    //this.editUser.address.city= data.address.city;
+    //this.editUser.address.pinCode= data.address.pincode;
     this.editUser.email = data.email;
     this.editUser.gender = data.gender;
     this.editUser.occupation = data.occupation;
     this.editUser.role = data.role;
     this.matDatepicker = data.dateofbirth;
-    this.router.navigate(['/request-help'])
- },
+    console.log(this.editUser);
+     },
  error => {
   console.log('an error occured');
 })
-  return this.editUser;
+  
 }
 
 

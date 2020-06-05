@@ -18,6 +18,7 @@ import { HttpHeaders } from  '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   user:UserForm;
+  id:any;
 
 
 
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
   confirmationResultdisplay:any;
 
     ngOnInit() {
+      this.appservice.currentId.subscribe(id => this.id = this.user.id)
 
       window['recaptchaVerifier'] = new window['firebase'].auth.RecaptchaVerifier('sign-in-button', {
         'size': 'invisible',
@@ -72,6 +74,7 @@ var phone = '+91'+this.user.id;
       this.confirmationResultdisplay.confirm(code).then((result) =>{
         // User signed in successfully.
         var user = result.user;
+        this.appservice.changeId(this.user.id)
         var domain = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '');
         this.href = this.router.url;
 

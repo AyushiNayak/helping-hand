@@ -13,10 +13,11 @@ export class AppService implements CanActivate {
 user : UserForm = new UserForm();
 
 canActivate(): boolean {
-    if ( !this.user || !this.user.id) {
+    if ( !this.user || !this.user.phoneNumber) {
       this.router.navigate(['login']);
       return false;
     }
+
     return true;
   }
 

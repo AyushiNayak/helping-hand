@@ -5,9 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.NamedNativeQueries;
-import javax.persistence.NamedNativeQuery;
-import java.lang.annotation.Native;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +13,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
   User findById(long id);
   User findByPhoneNumber(long phoneNumber);
-  @Query(value = "SELECT" +
+  @Query(value = ("SELECT" +
     " u.* " +
     " FROM" +
     " user u" +
@@ -28,12 +25,12 @@ public interface UserRepository extends CrudRepository<User, Long> {
     " AND u.TYPE = 2" +
     " AND a.state = ? " +
     " AND a.city = ? " +
-    " AND s.START_DATE = between  ? and ? " +
+    " AND s.START_DATE between ? and ? " +
     " AND u.id NOT IN (" +
     " SELECT" +
     " m.SEEKER_ID" +
     " FROM" +
-    " VOLUNTEER_MAPPING m)" ,nativeQuery = true)
+    " VOLUNTEER_MAPPING m)") ,nativeQuery = true)
   List<User> findPplNeedingHelp(int category,String state,String city, Date startDate,Date endDate);
 
   @Query(value = (" SELECT u.* FROM  user u" +

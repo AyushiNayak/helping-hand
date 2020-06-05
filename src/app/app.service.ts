@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 import{UserForm} from './userForm';
-import { BehaviorSubject } from 'rxjs';
  
 
 @Injectable({
@@ -22,13 +21,5 @@ canActivate(): boolean {
     return true;
   }
 
-  private messageSource = new BehaviorSubject('id');
-  currentId = this.messageSource.asObservable();
-
   
-
-  changeId(id: any) {
-    this.messageSource.next(id)
-  }
-
 }

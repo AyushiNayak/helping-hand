@@ -10,10 +10,10 @@ import { AppService } from './app.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path : 'user', component : UserComponent},
+  { path : 'user', component : UserComponent,canActivate: [AppService]},
   { path : '', component : LoginComponent},
   { path: 'home', component: HomeComponent,canActivate: [AppService]},
-  { path : 'edit-user', component: EditUserComponent},
+  { path : 'edit-user', component: EditUserComponent,canActivate: [AppService]},
   { path: 'request-help', component: RequestHelpComponent,canActivate: [AppService]},
   { path: 'volunteers', component:VolunteersComponent,canActivate: [AppService]}
 ];

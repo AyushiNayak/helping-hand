@@ -20,4 +20,9 @@ public class UserService {
   public User save(User user) {
     return userRepository.save(user);
   }
+  
+  public User findByPhoneNumber(long l) {
+	    User user =  userRepository.findByPhoneNumber(l);
+	    return user;
+	  }
 }

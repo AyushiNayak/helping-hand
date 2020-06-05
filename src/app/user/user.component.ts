@@ -82,10 +82,11 @@ this.user.dateofbirth = this.matDatepicker;
 if(this.checkbox==true)
 {
    const headers = new HttpHeaders ({'Content-Type': 'application/json'});
-this.http.post(domain+this.href+'/create', JSON.stringify(this.user), {headers: headers})
+this.http.post<any>(domain+this.href+'/create', JSON.stringify(this.user), {headers: headers})
   .subscribe(
       data => {
-        console.log('favourite received');
+           this.user = data;
+           console.log('favourite received');
       },
       error => {
         console.log('an error occured');

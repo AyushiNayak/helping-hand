@@ -1,15 +1,27 @@
+<header class="test">
+  <div class="container">
+    <label class="logo"> Helping Hand </label>
+    <nav fixed-top>
+      <ul>
+        <li><a routerLink="/edit-user" label="details">Update Details</a></li>
+        <li><a routerLink="/" label="logoutIcon">logout</a></li>
+      </ul>
+
+    </nav>
+  </div>
+</header>
 <mat-toolbar color="#4183c4" >
   <span>Please search the details</span>
 </mat-toolbar>
 <mat-card class="my-card">
   <mat-card-content>
-    <form #myForm="ngForm"class="my-form">
+    <form #myForm="ngForm"class="my-form" >
 
       <mat-form-field class="full-width">
         <mat-label>Category</mat-label>
         <mat-select required [(ngModel)]= "selectedStatus" name="selectedStatus">
-          <mat-option *ngFor="let category of categories" [value]="category">
-            {{category.name}}
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{category.volunteerView}}
           </mat-option>
         </mat-select>
       </mat-form-field>

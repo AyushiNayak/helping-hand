@@ -1,9 +1,13 @@
 package com.helpinghand.controller;
 
 import com.helpinghand.entity.Category;
+import com.helpinghand.entity.User;
 import com.helpinghand.repository.CategoryRepository;
+import com.helpinghand.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -12,11 +16,11 @@ import java.util.List;
 public class CategoryController {
 
   @Autowired
-  private CategoryRepository categoryRepository;
+  private CategoryService categoryService;
 
   @GetMapping(path = "/categories")
   public List<Category> findAll(){
-     return  categoryRepository.findAll();
+     return  categoryService.findAll();
   }
 
 }

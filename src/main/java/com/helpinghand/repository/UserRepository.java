@@ -30,7 +30,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     " SELECT" +
     " m.SEEKER_ID" +
     " FROM" +
-    " VOLUNTEER_MAPPING m)") ,nativeQuery = true)
+    " VOLUNTEER_MAPPING m) order by u.dateofbirth" ) ,nativeQuery = true)
   List<User> findPplNeedingHelp(int category,String state,String city, Date startDate,Date endDate);
 
   @Query(value = (" SELECT u.* FROM  user u" +

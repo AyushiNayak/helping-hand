@@ -1,12 +1,10 @@
-import { Component, OnInit,Input ,ViewChild} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import{UserForm} from '../userForm';
 import {MatRadioButton, MatDatepicker} from '@angular/material'
-import {FormControl, Validators} from '@angular/forms';
 import states  from '../../assets/states.json';
 import cities  from '../../assets/cities.json';
 import { HttpClient } from  '@angular/common/http';
 import { HttpHeaders } from  '@angular/common/http';
-import { LoginComponent } from '../login/login.component';
 import { AppService } from '../app.service';
 import { Router } from '@angular/router';
 import { postcodeValidator } from 'postcode-validator';
@@ -23,6 +21,7 @@ export class EditUserComponent implements OnInit {
   role:string;
   checkbox: boolean;
   editUser = new UserForm();
+  cancelEditUser = new UserForm();
   state:any;
   city:any;
   pincode:boolean;
@@ -39,6 +38,7 @@ export class EditUserComponent implements OnInit {
 
 
   ngOnInit() {
+    this.cancelEditUser = JSON.parse(JSON.stringify(this.editUser));
     let state1 = [];
     for (let i = 0; i < states.length ; i++) {
        state1[i] = states[i].name;
@@ -81,5 +81,10 @@ saveChanges():void{
       this.router.navigate(['/home']);
       
 }
+
+ cancel(){
+  this.editUser = this.cancelEditUser;
+  this.router.navigate(['/home']);
+ }
  
 }

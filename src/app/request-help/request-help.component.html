@@ -3,7 +3,6 @@
     <label class="logo"> Helping Hand </label>
     <nav fixed-top>
       <ul>
-        <li><a routerLink="/edit-user" label="details">Update Details</a></li>
         <li><a routerLink="/" label="logoutIcon">logout</a></li>
       </ul>
     </nav>
@@ -52,22 +51,27 @@
 </mat-card>
 
 <div class="result" *ngIf="visible">
-  <p>Volunteers : </p>
-<mat-accordion>
+  <mat-error *ngIf="volunteers.length==0">No volunteers Available near your Area</mat-error>
+  <div *ngIf="volunteers.length>0">Volunteers : </div>
+   <mat-accordion>
   <mat-expansion-panel *ngFor="let user of volunteers">
     <mat-expansion-panel-header>
-      <mat-panel-title style="width: 60%">
+      <mat-panel-title>
        {{ user.firstName +" "+ user.lastName }}
       </mat-panel-title>
-      <mat-panel-description style="width: 30%">
+      <mat-panel-description>
         {{ user.gender }}
       </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p> {{ user.address.city +", "+user.address.state +" - "+user.address.pinCode }}</p>
-    <mat-action-row>
+      <mat-panel-description>
+       {{ user.address.city +", "+user.address.state +" - "+user.address.pinCode }}
+       </mat-panel-description>
+      </mat-expansion-panel-header>
+    <mat-action-row style="text-align: center;">
       <button mat-raised-button (click)="select(user.id)">Select</button>
     </mat-action-row>
   </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> 
 </div>
+<div class="result" *ngIf="assigned"><p>Volunteer has been assigned to you , you will be contacted soon</p></div>
+
 

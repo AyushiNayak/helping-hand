@@ -26,6 +26,7 @@ export class RequestHelpComponent implements OnInit {
   visible = false;
   seeker : SeekerForm = new SeekerForm();
   user : UserForm;
+  assigned:boolean = false;
 
 
   constructor(private router: Router, private service : NeedyPeopleService, private categoryService : CategoriesService,
@@ -42,6 +43,7 @@ export class RequestHelpComponent implements OnInit {
   }
 
   submit() : void {
+    this.assigned = false;
     this.seeker.userId = this.appservice.user.id;
     this.seeker.category = this.selectedStatus;
     this.seeker.startDate = this.matDatepickerStart;
@@ -67,9 +69,11 @@ export class RequestHelpComponent implements OnInit {
         .subscribe(
           data =>{
             console.log(data);
-            this.visible = false;
           } ,
           error => console.log('an error occured') );
+          this.visible = false;
+          this.assigned=true;
+
     }
 
   }

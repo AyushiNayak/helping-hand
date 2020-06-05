@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, private appservice: AppService, private http: HttpClient) {
     this.user = appservice.user;
-    this.otpStatus = 'false';
+        this.otpStatus = 'false';
   }
   phonenumber: string;
   public href: string = "";
@@ -69,10 +69,9 @@ export class LoginComponent implements OnInit {
     var code = this.otp;
     this.confirmationResultdisplay.confirm(code).then((result) => {
       // User signed in successfully.
-      var user = result.user;
       var domain = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '');
       this.href = this.router.url;
-
+      this.appservice.user=new UserForm();
       this.http.get<any>(domain + this.href + 'get/' + this.user.phoneNumber).subscribe(data => {
         if (data != null && data.role == "volunteer") {
           this.user= data;
@@ -86,6 +85,7 @@ export class LoginComponent implements OnInit {
 
         }
         else if (data == null) {
+          this.appservice.user.phoneNumber=this.user.phoneNumber;
           this.router.navigate(["user"]);
         }
 

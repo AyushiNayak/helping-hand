@@ -3,7 +3,6 @@
     <label class="logo"> Helping Hand </label>
     <nav fixed-top>
       <ul>
-        <li><a routerLink="/edit-user" label="details">Update Details</a></li>
         <li><a routerLink="/" label="logoutIcon">logout</a></li>
       </ul>
     </nav>
@@ -47,24 +46,28 @@
   </mat-card-actions>
 </mat-card>
 
+
 <div class="result" *ngIf="visible">
-  <mat-accordion>
-    <mat-expansion-panel *ngFor="let person of people">
-      <mat-expansion-panel-header>
-        <mat-panel-title style="width: 60%">
-          {{ person.name }}
-        </mat-panel-title>
-        <mat-panel-description style="width: 10%">
-          {{ person.age }}
-        </mat-panel-description>
-        <mat-panel-description style="width: 30%">
-          {{ person.gender }}
-        </mat-panel-description>
+  <mat-error *ngIf="people.length==0">No one seeking help  near your Area</mat-error>
+   <div *ngIf="people.length>0">People Looking for help : </div>
+   <mat-accordion>
+  <mat-expansion-panel *ngFor="let user of people">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       {{ user.firstName +" "+ user.lastName }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ user.gender }}
+      </mat-panel-description>
+      <mat-panel-description>
+       {{ user.address.city +", "+user.address.state +" - "+user.address.pinCode }}
+       </mat-panel-description>
       </mat-expansion-panel-header>
-      <p> {{ person.location }}</p>
-      <mat-action-row>
-        <button mat-raised-button (click)="select()">Select</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  </mat-accordion>
+    <mat-action-row style="text-align: center;">
+      <button mat-raised-button (click)="select(user.id)">Select</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion> 
 </div>
+<div class="result" *ngIf="assigned"><p>Please get in touch to the mailed contact details</p></div>
+

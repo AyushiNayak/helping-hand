@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {VolunteersService} from "../volunteers.service";
 import {CategoriesService} from "../categories.service";
+import { SeekerForm} from "../seekerForm";
+import {NeedyPeopleService} from "../needyPeople.service";
+import {UserForm} from "../userForm";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {People} from "../people";
 
 @Component({
   selector: 'app-request-help',
@@ -10,19 +14,22 @@ import {CategoriesService} from "../categories.service";
 })
 
 export class RequestHelpComponent implements OnInit {
-  selectedStatus:  string ;
-  matDatepickerStart : string;
-  matDatepickerTo : string;
+  selectedStatus:  number ;
+  matDatepickerStart : Date;
   minDate: Date;
-  details : string;
+  description : string;
   submitBtnVisible : boolean;
   updateBtnVisible : boolean;
   cancleBtnVisible : boolean;
   public volunteers = [];
   public categories = [];
   visible = false;
+  seeker : SeekerForm = new SeekerForm();
+  user : UserForm;
 
-  constructor(private router: Router, private service : VolunteersService, private categoryService : CategoriesService) {
+
+  constructor(private router: Router, private service : NeedyPeopleService, private categoryService : CategoriesService,
+              private http:HttpClient) {
     this.minDate = new Date();
     this.submitBtnVisible = true;
     this.updateBtnVisible = false;
@@ -30,32 +37,47 @@ export class RequestHelpComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getVolunteerList().subscribe(data => this.volunteers = data);
     this.categoryService.getVolunteerCategories().subscribe(data => this.categories = data);
   }
 
   submit() : void {
+    this.seeker.userId = 1;
+    this.seeker.category = this.selectedStatus;
+    this.seeker.startDate = this.matDatepickerStart;
+    this.seeker.description = this.description;
     if(!this.isEmpty(this.selectedStatus)){
-      console.log(this.selectedStatus + ","+ this.matDatepickerStart);
+      console.log(JSON.stringify(this.seeker));
+      this.service.getVolunteerList(JSON.stringify(this.seeker))
+        .subscribe(
+          data => console.log(data),
+            error => console.log('an error occured') );
       this.visible = true;
     }
-    JSON.stringify(this.selectedStatus);
   }
 
   select() : void{
     this.submitBtnVisible = false;
     this.updateBtnVisible = true;
     this.cancleBtnVisible = true;
+
+    /*var domain = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '')+ this.router.url;
+    const headers = new HttpHeaders ({'Content-Type': 'application/json'});
+    this.http.post(domain+'/create', JSON.stringify(this.details), {headers: headers})
+      .subscribe(
+        data => {
+          console.log('favourite received');
+        },
+        error => {
+          console.log('an error occured');
+        }
+      )*/
+
   }
 
-  cancle() : void{
+  delete() : void{
     this.submitBtnVisible = true;
     this.updateBtnVisible = false;
     this.cancleBtnVisible = false;
-    this.matDatepickerStart = "";
-    this.matDatepickerTo = "";
-    this.details = "";
-    this.selectedStatus = "";
     this.visible = false;
   }
 

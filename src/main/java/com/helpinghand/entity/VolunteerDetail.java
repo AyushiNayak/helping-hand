@@ -13,12 +13,9 @@ import java.util.List;
 @Entity
 public class VolunteerDetail implements Serializable {
 
+  private int category ;
   private Date startDate;
   private Date endDate;
-
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  @JoinColumn(name = "userId")
-  private List<VolunteerCategoryMapping> selectedCategories;
   @Id
   private int userId;
 
@@ -46,12 +43,12 @@ public class VolunteerDetail implements Serializable {
     this.endDate = endDate;
   }
 
-  public List<VolunteerCategoryMapping> getSelectedCategories() {
-    return selectedCategories;
+  public int getCategory() {
+    return category;
   }
 
-  public void setSelectedCategories(List<VolunteerCategoryMapping> selectedCategories) {
-    this.selectedCategories = selectedCategories;
+  public void setCategory(int category) {
+    this.category = category;
   }
 
 }

@@ -6,16 +6,15 @@ import {Category} from "./category";
 @Injectable()
 export class CategoriesService {
 
-  private needsUrl = "/assets/needCategories.json";
-  private volunteersUrl = "/assets/volunteerCategories.json";
+  private url = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '') + '/categories';
 
   constructor(private http: HttpClient) {}
 
   getNeedsCategories() : Observable<Category[]>{
-    return this.http.get<Category[]>(this.needsUrl);
+    return this.http.get<Category[]>(this.url);
   }
 
   getVolunteerCategories() : Observable<Category[]>{
-    return this.http.get<Category[]>(this.volunteersUrl);
+    return this.http.get<Category[]>(this.url);
   }
 }

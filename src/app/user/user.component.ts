@@ -45,7 +45,7 @@ export class UserComponent implements OnInit {
 
 
   ngOnInit() {
-    
+
     let state1 = [];
     for (let i = 0; i < states.length ; i++) {
       state1[i] = states[i].name;
@@ -96,7 +96,6 @@ this.http.post<any>(domain+this.href+'/create', JSON.stringify(this.user), {head
 
 
   JSON.stringify(this.user);
-  this.router.navigate(['/home']);
   console.log(this.user);}
   }
 

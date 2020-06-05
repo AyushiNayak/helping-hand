@@ -2,7 +2,7 @@ import Address from './Address';
 
 export class UserForm {
     constructor(
-      public id?: string,
+      public id?: number,
       public phoneNumber?:string,
       public firstName?: string,
       public lastName?: string,

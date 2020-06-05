@@ -5,6 +5,7 @@ import {VolunteersService} from "../volunteers.service";
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import {VolunteerForm} from "../volunteerForm";
 import {UserForm} from "../userForm";
+import {AppService} from "../app.service";
 
 @Component({
   selector: 'app-volunteers',
@@ -22,7 +23,9 @@ export class VolunteersComponent implements OnInit {
   volunteer : VolunteerForm = new VolunteerForm();
   user : UserForm;
 
-  constructor(private volservice : VolunteersService, private categoryService : CategoriesService,private fb: FormBuilder) {
+  constructor(private volservice : VolunteersService, private categoryService : CategoriesService,private fb: FormBuilder,
+              private appservice : AppService) {
+    this.user = appservice.user;
     this.minDate = new Date();
     }
 
@@ -31,7 +34,7 @@ export class VolunteersComponent implements OnInit {
   }
 
   search() : void {
-    this.volunteer.userId = 1;
+    this.volunteer.userId = this.user.id;
     this.volunteer.category = this.selectedStatus;
     this.volunteer.startDate = this.matDatepickerStart;
     this.volunteer.endDate = this.matDatepickerTo;

@@ -6,6 +6,7 @@ import {NeedyPeopleService} from "../needyPeople.service";
 import {UserForm} from "../userForm";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {People} from "../people";
+import {AppService} from "../app.service";
 
 @Component({
   selector: 'app-request-help',
@@ -29,7 +30,8 @@ export class RequestHelpComponent implements OnInit {
 
 
   constructor(private router: Router, private service : NeedyPeopleService, private categoryService : CategoriesService,
-              private http:HttpClient) {
+              private http:HttpClient,private appservice:AppService) {
+    this.user = appservice.user;
     this.minDate = new Date();
     this.submitBtnVisible = true;
     this.updateBtnVisible = false;
@@ -41,7 +43,7 @@ export class RequestHelpComponent implements OnInit {
   }
 
   submit() : void {
-    this.seeker.userId = 1;
+    this.seeker.userId = this.user.id;
     this.seeker.category = this.selectedStatus;
     this.seeker.startDate = this.matDatepickerStart;
     this.seeker.description = this.description;

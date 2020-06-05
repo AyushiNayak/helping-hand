@@ -2,12 +2,9 @@ package com.helpinghand.controller;
 
 import com.helpinghand.entity.SeekerDetail;
 import com.helpinghand.entity.User;
-<<<<<<< HEAD
 import com.helpinghand.entity.VolunteerMapping;
 import com.helpinghand.repository.RequestRepository;
-=======
 import com.helpinghand.entity.VolunteerDetail;
->>>>>>> 8a260a0bed2a83601997e86fa4695b61c7acc909
 import com.helpinghand.service.SeekerService;
 import com.helpinghand.service.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;

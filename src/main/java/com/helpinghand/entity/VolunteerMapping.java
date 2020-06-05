@@ -2,9 +2,11 @@ package com.helpinghand.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
-public class VolunteerMapping {
+public class VolunteerMapping implements Serializable {
 
   @Id
   private int volunteerId;
@@ -25,5 +27,20 @@ public class VolunteerMapping {
 
   public void setSeekerId(int seekerId) {
     this.seekerId = seekerId;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    VolunteerMapping that = (VolunteerMapping) o;
+    return volunteerId == that.volunteerId &&
+      seekerId == that.seekerId;
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(volunteerId, seekerId);
   }
 }

@@ -25,5 +25,10 @@ public class UserController {
   public User userDetails(@PathVariable("userId") Long userId) {
     return userService.findById(userId);
   }
+  
+  @GetMapping("/get/{phoneNumber}")
+  public User userDetailsbyPhNo(@PathVariable("phoneNumber") Long phoneNumber) {
+    return userService.findByPhoneNumber(phoneNumber);
+  }
 
 }

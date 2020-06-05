@@ -3,6 +3,7 @@ package com.helpinghand.controller;
 import com.helpinghand.entity.SeekerDetail;
 import com.helpinghand.entity.User;
 import com.helpinghand.service.SeekerService;
+import com.helpinghand.service.VolunteerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +17,13 @@ import java.util.List;
 public class SeekerController {
   @Autowired
   private SeekerService seekerService;
+  @Autowired
+  private VolunteerService volunteerService;
 
   @PostMapping(path = "/request-help/create")
-  public SeekerDetail createSeeker(@RequestBody SeekerDetail seekerDetail){
-   return seekerService.createSeeker(seekerDetail);
+  public List<User> createSeeker(@RequestBody SeekerDetail seekerDetail){
+   seekerService.createSeeker(seekerDetail);
+   return volunteerService.fetchVolunteers(seekerDetail);
   }
 
 

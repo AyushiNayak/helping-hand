@@ -8,25 +8,11 @@ import {UserForm} from "./userForm";
 export class NeedyPeopleService {
 
   private url = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '') + this.router.url +'/create';
-  private volunteerUrl = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port : '') + '/volunteers/create';
   constructor(private http: HttpClient,private router: Router) { }
 
 
   createSeeker(details):Observable<UserForm[]> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    this.http.post<any>(this.url, details, {headers: headers})
-      .subscribe(
-        data => {
-           return this.http.post<UserForm[]>(this.volunteerUrl, details, {headers: headers});
-        },
-        error => {
-          console.log('an error occured');
-          return [];
-        }
-      )
-    return ;
+   return this.http.post<any>(this.url, details, {headers: headers});
   }
-
-
-
 }

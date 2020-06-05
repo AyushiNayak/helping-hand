@@ -17,7 +17,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
   User findById(long id);
   User findByPhoneNumber(long phoneNumber);
   @Query(value = "SELECT" +
-    " u.*," +
+    " u.* " +
     " FROM" +
     " user u" +
     " JOIN seeker_detail s ON" +
@@ -36,10 +36,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     " VOLUNTEER_MAPPING m)" ,nativeQuery = true)
   List<User> findPplNeedingHelp(int category,String state,String city, Date startDate,Date endDate);
 
-  @Query(value = "SELECT" +
-    " u.*," +
-    " FROM" +
-    " user u" +
+  @Query(value = (" SELECT u.* FROM  user u" +
     " JOIN VOLUNTEER_DETAIL s ON" +
     " u.id = s.user_id" +
     " JOIN ADDRESS a" +
@@ -53,7 +50,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     " SELECT" +
     " m.VOLUNTEER_ID" +
     " FROM" +
-    " VOLUNTEER_MAPPING m)" ,nativeQuery = true)
+    " VOLUNTEER_MAPPING m)") ,nativeQuery = true)
   List<User> findAvailableVolunteers(int category,String state,String city, Date startDate);
 }
 

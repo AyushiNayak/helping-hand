@@ -42,6 +42,7 @@ export class RequestHelpComponent implements OnInit {
   }
 
   submit() : void {
+    this.seeker.userId = this.appservice.user.id;
     this.seeker.category = this.selectedStatus;
     this.seeker.startDate = this.matDatepickerStart;
     this.seeker.description = this.description;

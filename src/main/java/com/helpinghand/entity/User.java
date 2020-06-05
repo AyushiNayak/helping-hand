@@ -19,20 +19,33 @@ public class User implements Serializable {
   private Long id;
   private String firstName;
   private String lastName;
-  private String  email;
+  private String email;
   private String gender;
   private Date dateofbirth;
   private String occupation;
-  private String role ;
-  private Date createDate = new Date() ;
+  private String role;
+  private Date createDate = new Date();
   private Long phoneNumber;
+  private int type;
 
+  public int getType() {
+    return type;
+  }
 
+  public void setType(int type) {
+    this.type = type;
+  }
 
-  @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-  @JoinColumn(name =  "addressId")
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "addressId")
   private Address address;
-  protected User() {
+
+  public User() {
+
+  }
+
+  public User(long id) {
+    this.id = id;
   }
 
 
@@ -42,45 +55,52 @@ public class User implements Serializable {
       "User[id=%d, firstName='%s', lastName='%s']",
       id, firstName, lastName);
   }
+
   public String getEmail() {
-		return email;
-	}
+    return email;
+  }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-	public String getGender() {
-		return gender;
-	}
+  public String getGender() {
+    return gender;
+  }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
 
-	public Date getDateofbirth() {
-		return dateofbirth;
-	}
+  public Date getDateofbirth() {
+    return dateofbirth;
+  }
 
-	public void setDateofbirth(Date dateofbirth) {
-		this.dateofbirth = dateofbirth;
-	}
+  public void setDateofbirth(Date dateofbirth) {
+    this.dateofbirth = dateofbirth;
+  }
 
-	public String getOccupation() {
-		return occupation;
-	}
+  public String getOccupation() {
+    return occupation;
+  }
 
-	public void setOccupation(String occupation) {
-		this.occupation = occupation;
-	}
+  public void setOccupation(String occupation) {
+    this.occupation = occupation;
+  }
 
-	public String getRole() {
-		return role;
-	}
+  public String getRole() {
+    return role;
+  }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+  public void setRole(String role) {
+    this.role = role;
+    if ("volunteer".equals(role)) {
+      this.setType(1);
+    } else {
+      this.setType(2);
+    }
+
+  }
 
   public void setId(Long id) {
     this.id = id;

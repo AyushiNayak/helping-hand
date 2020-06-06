@@ -1,14 +1,10 @@
 = Helping Hand
 
-Helping Hand was designed as a volunteer mapping platform .During this covid times there are people in need of assistance to help 
+Helping Hand was designed as a volunteer mapping platform .During this covid times there are people in need of assistance to help with the basic necessities  especially with the elderly and people stuck in their home due to various restriction or health issues.
+We also have a lot of good samaritan  who are ready to help those in need. So we came up with the platform to help connect these people. It is a simple Spring-Boot Angular Application deployed on IBM Cloud. It has been fully Integrated with OTP based login system.
 
-with the basic necessities  especially with the elderly and people stuck in their home due to various restriction or health issues.
-
-We also have a lot of good samaritan  who are ready to help those in need. So we came up with the platform to help connect these
-
-people. It is a simple Spring-Boot Angular Application deployed on IBM Cloud. It has been fully Integrated with OTP based login system.
-
-= Live Application URL - http://helpinghand-happy-possum-hc.eu-gb.mybluemix.net/
+= Live Application URL
+http://helpinghand-happy-possum-hc.eu-gb.mybluemix.net/
 
 
 
@@ -16,19 +12,19 @@ people. It is a simple Spring-Boot Angular Application deployed on IBM Cloud. It
 
 = Team Members :
 
-Sanjida Barlaskar
-Priyanka Pattnaik
-Ayushi Nayak
-Lasya priya lolla
+Sanjida Barlaskar.
+Priyanka Pattnaik.
+Ayushi Nayak.
+Lasya priya lolla.
 
 
 
 = Technologies Used-
 
 1. Spring-Boot Framework.
-2. Angular 7
-3.IBM DB2 Database
-4. Java 8
+2. Angular 7.
+3. IBM DB2 Database.
+4. Java 8.
 
 = RoadMap-
 

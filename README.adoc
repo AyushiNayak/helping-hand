@@ -10,7 +10,7 @@ http://helpinghand-happy-possum-hc.eu-gb.mybluemix.net/
 
 = Team Name : Sysouts
 
-= Team Members :
+= Team Members 
 
 Sanjida Barlaskar.
 Priyanka Pattnaik.
@@ -19,14 +19,14 @@ Lasya priya lolla.
 
 
 
-= Technologies Used-
+= Technologies Used 
 
 1. Spring-Boot Framework.
 2. Angular 7.
 3. IBM DB2 Database.
 4. Java 8.
 
-= RoadMap-
+= RoadMap 
 
 1. Develop an  weighted sum algorithm  to priortize people seeking help based on various params.
 2. Integration with google maps.
